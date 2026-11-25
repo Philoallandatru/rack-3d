@@ -1,3 +1,5 @@
 * text=auto eol=lf
-dist/rack-embed.html linguist-generated=true -diff
+equipment-layout/*.html -text -diff
+dist/rack-embed.html -text -diff linguist-generated=true
+dist/rack-viewer.html linguist-generated=true -diff
 dist/rack-scene.mjs linguist-generated=true -diff

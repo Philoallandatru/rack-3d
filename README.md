@@ -1,23 +1,28 @@
 # 机柜 3D
 
-从设备货架场景抽出的独立 Three.js 视图。六组四层货架、储藏柜、电脑模型和材质沿用原场景。可以旋转、缩放、展开层板、用人物视角漫游，也可以在画面里拖动设备并换位。
+原版设备货架布局和可嵌入的 Three.js 视图都在这个独立仓库。默认嵌入页使用完整原版，包含 3D 布局、控制平面、人物漫游、货架增删与对齐、平台增删改查、测试组、故障模拟和时间线回放。原版带有布局和人物位置的本地存档。
 
-## iframe 集成
+- [设备货架布局原版](equipment-layout/设备货架布局.html)
+- [场景预览](equipment-layout/场景预览.png) · [控制平面预览](equipment-layout/控制平面预览.png) · [人物视角预览](equipment-layout/人物视角预览.png)
 
-把 [rack-embed.html](dist/rack-embed.html) 放进网站的静态目录。页面内置 Three.js 和所有几何，下载到本地后也可直接打开。以下示例使用 `/widgets/rack-embed.html`。
+## 嵌入完整应用
+
+把 [rack-embed.html](dist/rack-embed.html) 放进网站的静态目录。它是原版 HTML 的逐字节副本，内置 Three.js 和所有几何，也可直接用浏览器离线打开。以下示例使用 `/widgets/rack-embed.html`。
 
 ```html
 <iframe
-  src="/widgets/rack-embed.html?autoplay=1"
-  title="机柜 3D"
+  src="/widgets/rack-embed.html"
+  title="设备货架布局"
   loading="lazy"
-  style="display:block;width:100%;height:clamp(360px,60vh,660px);border:0"
+  style="display:block;width:100%;height:clamp(520px,78vh,900px);border:0"
 ></iframe>
 ```
 
-`autoplay=1` 进入页面后开启巡视，用户也可用「巡视」按钮切换。页面离开视口、切到后台或启用减少动态效果时会停止连续渲染。设备换位状态保存在当前实例中。
+## 嵌入 3D 视图
 
-## JavaScript 集成
+[rack-viewer.html](dist/rack-viewer.html) 是独立 3D 画布，可旋转、缩放、展开层板、漫游和拖动换位。需要自动巡视时，用 iframe 加载 `rack-viewer.html?autoplay=1`。页面离开视口、切到后台或启用减少动态效果时会停止连续渲染。换位状态保存在当前实例中。
+
+### JavaScript 挂载 3D 视图
 
 把 [rack-scene.mjs](dist/rack-scene.mjs) 和 [THREE-LICENSE.txt](dist/THREE-LICENSE.txt) 放进网站静态目录。组件在 Shadow DOM 中绘制，容器高度由网站指定。容器移除时调用 `destroy()` 释放 WebGL、观察器和事件监听。
 
@@ -45,4 +50,4 @@ npm run build
 npm run preview
 ```
 
-在本机打开 `http://127.0.0.1:4183/rack-embed.html`。货架尺寸、工位和示例数据在 `src/rack-layout.js`，几何在 `src/rack-geometry.js`，交互和渲染分别在 `src/rack-scene.js` 与 `src/rack-renderer.js`。Three.js r170 使用 MIT 许可。 [Three.js 源码](https://github.com/mrdoob/three.js/tree/r170) · [许可文本](THREE-LICENSE.txt)
+在本机打开 `http://127.0.0.1:4183/rack-embed.html` 查看完整版。构建时从 `equipment-layout/设备货架布局.html` 复制完整版。独立视图的尺寸、工位和示例数据在 `src/rack-layout.js`，几何在 `src/rack-geometry.js`，交互和渲染分别在 `src/rack-scene.js` 与 `src/rack-renderer.js`。Three.js r170 使用 MIT 许可。 [Three.js 源码](https://github.com/mrdoob/three.js/tree/r170) · [许可文本](THREE-LICENSE.txt)

@@ -25,5 +25,6 @@ const license = await readFile(at('THREE-LICENSE.txt'), 'utf8')
 const template = await readFile(at('embed.html'), 'utf8')
 const html = template.replace('<!-- RACK_RUNTIME -->', () =>
   '<script>\n/*\n' + license + '\n*/\n' + code.replace(/<\/script/gi, '<\\/script') + '\n</script>')
-await writeFile(at('dist/rack-embed.html'), html)
+await writeFile(at('dist/rack-viewer.html'), html)
+await copyFile(at('equipment-layout/设备货架布局.html'), at('dist/rack-embed.html'))
 await copyFile(at('THREE-LICENSE.txt'), at('dist/THREE-LICENSE.txt'))
