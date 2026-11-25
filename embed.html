@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="可嵌入的机柜三维动画，支持巡视、漫游、展开层板和拖拽换位。">
+    <link rel="icon" href="data:,">
+    <title>机柜 3D</title>
+    <style>html,body,#rack { height:100%; margin:0; } body { background:#ede8df; }</style>
+  </head>
+  <body>
+    <main id="rack" aria-label="机柜 3D"></main>
+    <!-- RACK_RUNTIME -->
+    <script>
+      Rack3D.mountRackScene(document.getElementById('rack'), {
+        autoplay: new URLSearchParams(location.search).get('autoplay') === '1',
+      })
+    </script>
+  </body>
+</html>

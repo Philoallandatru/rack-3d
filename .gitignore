@@ -1,0 +1,5 @@
+node_modules/
+dist/*
+!dist/rack-embed.html
+!dist/rack-scene.mjs
+!dist/THREE-LICENSE.txt

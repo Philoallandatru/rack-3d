@@ -1,0 +1,3 @@
+* text=auto eol=lf
+dist/rack-embed.html linguist-generated=true -diff
+dist/rack-scene.mjs linguist-generated=true -diff
